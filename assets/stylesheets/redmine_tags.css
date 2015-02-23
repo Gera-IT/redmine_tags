@@ -34,6 +34,10 @@ div.tags { text-align: center; }
 
 .tag-label-color a { color: white; }
 
+#content .tags {
+	text-align:left!important;
+}
+
 div.tags .tag-nube-1 { font-size: .8em; }
 div.tags .tag-nube-2 { font-size: .9em; }
 div.tags .tag-nube-3 { font-size: 1em; }
