@@ -1,4 +1,4 @@
 <%= raw @tags.collect {|tag| 
        tag.name
-    }.to_json
+    }.uniq.to_json
 %>
