@@ -58,7 +58,8 @@ module RedmineTags
         #   * name_like - String. Substring to filter found tags.
         def available_tags(options = {})
           ids_scope = WikiPage.select("#{WikiPage.table_name}.id").joins(:wiki => :project)
-          ids_scope = ids_scope.on_project(options[:project]) if options[:project]
+          ids_scope = ids_scope.where("projects.id = ?", options[:project].id) if options[:project]
+          # ids_scope = ids_scope.on_project(options[:project]) if options[:project]
 
           conditions = [""]
 

@@ -33,26 +33,28 @@ module RedmineTags
       module InstanceMethods
         def issue_tags
           @name = params[:q].to_s
+          project = Project.find(params[:project_id])
           # @tags = ActsAsTaggableOn::Tag.where("name LIKE ?", "%#{@name}%").all
           @tags = Issue.available_tags({
-            :project_id => @project,
+            :project => project,
             :name_like => @name
           })
           @tags = @tags + WikiPage.available_tags({
-                                                      :project_id => @project,
+                                                      :project => project,
                                                       :name_like => @name
                                                   })
           render :layout => false, :partial => 'tag_list'
         end
 
         def wiki_tags
+          project = Project.find(params[:project_id])
           @name = params[:q].to_s
           @tags = WikiPage.available_tags({
-            :project_id => @project,
+            :project => project,
             :name_like => @name
           })
           @tags = @tags + Issue.available_tags({
-                                                   :project_id => @project,
+                                                   :project => project,
                                                    :name_like => @name
                                                })
           render :layout => false, :partial => 'tag_list'
