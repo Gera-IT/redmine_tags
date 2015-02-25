@@ -1,6 +1,9 @@
+<% if @project.enabled_modules.map(&:name).include?("enable_tags") %>
 <% unless page.tag_list.empty? %>
 
     <b><%=l(:tags)%>:</b>
     <%= render_sidebar_tags %>
     <%#= safe_join(page.tag_counts.collect{ |t| render_tag_link(t, :show_count => false, :open_only => false) }, ', ') %>
+<% end %>
+
 <% end %>

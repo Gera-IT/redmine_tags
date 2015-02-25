@@ -31,6 +31,13 @@ Redmine::Plugin.register :redmine_tags do
   requires_redmine :version_or_higher => '2.1.0'
   requires_acts_as_taggable_on
 
+  project_module :enable_tags do
+
+    permission :enable_wiki_tags, :auto_completes=> :wiki_tags
+    permission :enable__issue_tags, :auto_completes=> :issue_tags
+
+  end
+
   settings :default => {
     :issues_sidebar => 'none',
     :issues_show_count => 0,
